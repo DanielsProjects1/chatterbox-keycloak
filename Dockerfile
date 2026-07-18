@@ -1,4 +1,4 @@
-FROM quay.io/keycloak/keycloak:26.3.5
+FROM quay.io/keycloak/keycloak:latest
 
 COPY chatterbox-realm.json /opt/keycloak/data/import/
 
