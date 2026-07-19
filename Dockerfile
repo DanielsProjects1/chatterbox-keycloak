@@ -1,6 +1,6 @@
 FROM quay.io/keycloak/keycloak:26.6.1 AS builder
 
-ENV KC_DB=dev-file
+ENV KC_DB=postgres
 
 RUN /opt/keycloak/bin/kc.sh build
 
@@ -13,13 +13,4 @@ EXPOSE 10000
 
 ENTRYPOINT ["/opt/keycloak/bin/kc.sh"]
 
-CMD [
-  "start",
-  "--optimized",
-  "--http-enabled=true",
-  "--http-host=0.0.0.0",
-  "--http-port=10000",
-  "--hostname=https://chatterbox-keycloak.onrender.com",
-  "--proxy-headers=xforwarded",
-  "--cache=local"
-]
+CMD ["start", "--optimized", "--import-realm", "--http-enabled=true", "--http-host=0.0.0.0", "--http-port=10000", "--hostname=https://chatterbox-keycloak.onrender.com", "--proxy-headers=xforwarded", "--cache=local"]
