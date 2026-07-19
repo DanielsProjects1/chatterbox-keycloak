@@ -13,4 +13,13 @@ EXPOSE 10000
 
 ENTRYPOINT ["/opt/keycloak/bin/kc.sh"]
 
-CMD ["start", "--optimized", "--import-realm", "--http-enabled=true", "--http-host=0.0.0.0", "--http-port=10000", "--hostname=https://chatterbox-keycloak.onrender.com", "--proxy-headers=xforwarded"]
+CMD [
+  "start",
+  "--optimized",
+  "--http-enabled=true",
+  "--http-host=0.0.0.0",
+  "--http-port=10000",
+  "--hostname=https://chatterbox-keycloak.onrender.com",
+  "--proxy-headers=xforwarded",
+  "--cache=local"
+]
